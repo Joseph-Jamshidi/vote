@@ -1,0 +1,222 @@
+@font-face {
+    font-family: 'Vazir FD-UI';
+    src: url('../font/Vazir-Regular-FD-UI.ttf');
+}
+@media only screen and (max-width: 991px) {
+    .nav-item {
+        width: 35%;
+    }
+}
+@media (max-width: 992px) {
+    .selector {
+        padding: calc(1.325rem + 0.9vw);
+        font-size: 1.125rem;
+    }
+}
+body{
+    direction: rtl;
+    background-color: #EAF8FF;
+}
+.container-fluid{
+    background-color: #A5D4DE;
+    margin: 0 16px;
+    padding: 0;
+    border-radius: 10px;
+}
+.offcanvas{
+    background-color: #A5D4DE;
+}
+ul{
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+a , a:visited , a:link{
+    color: white;
+    text-decoration: none;
+}
+.nav-item{
+    background-color: #425C81;
+    margin: 8px 8px;
+    min-width: 5%;
+    border-radius: 10px;
+}
+.nav-link{
+    text-align: center;
+    color: white;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 30px;
+    transition: all 0.3s ease-out;
+    padding: 0.25rem;
+}
+.offcanvas-title{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+}
+#sign\ up{
+    background-color: white;
+    border: 1px solid #425C81;
+    min-width: 4%;
+}
+#sign\ up a{
+    color: #425C81;
+}
+#login{
+    min-width: 4%;
+}
+.panel{
+    background-color: white;
+    border: 1px solid #425C81;
+    border-radius: 4px;
+}
+h5{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 30px;
+    color: #425C81;
+}
+.nav-panel{
+    width: 90%;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+a.link-panel{
+    color: #5072A4;
+}
+.link-panel{
+    background-color: #EAF8FF;
+    border-radius: 4px;
+    padding-left: 17%;
+    padding-right: 17%;
+    margin: 8px 4px 8px 4px;
+}
+a.zir-panel{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 22px;
+    color: #5072A4;
+}
+.btn{
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 0;
+}
+.collapse{
+    background-color: #425C81;
+    border-radius: 8px;
+}
+#img\ 10 , #img\ 11{
+    width: 5%;
+}
+.card{
+    background: white;
+    border: 1px solid #425C81;
+    border-radius: 4px;
+}
+#edit{
+    background: #425C81;
+    border-radius: 6px;
+    width: fit-content;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 30px;
+}
+.panel-text{
+    background: #FFFFFF;
+    border: 1px solid #425C81;
+    border-radius: 4px;;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 25px;
+    color: #000000;
+    align-items: center;
+}
+.sec{
+    border: 1px solid #425C81;
+}
+.create-part{
+    border-bottom: 5px solid #5072A4;
+    border-left: 5px solid #5072A4;
+    border-right: 5px solid #5072A4;
+    padding: 0 2% 2%;
+    margin: 3% -12px;
+}
+.form-control , .form-select{
+    border: 1px solid #425C81;
+}
+::placeholder{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 30px;
+}
+#cp-1{
+    border: 1px dashed #425C81;
+    background-color: rgba(234, 248, 255, 0.35);
+    width: fit-content;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 25px;
+    color: #425C81;
+}
+@media only screen and (min-width: 768px){
+    .date{
+        max-width: 30%;
+    }
+}
+@media only screen and (min-width: 992px){
+    .date{
+        max-width: 17%;
+    }
+}
+.date{
+    margin: 0 2% 2%;
+}
+.e-hide{
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #425C81;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 17px;
+    line-height: 30px;
+    color: rgba(0, 0, 0, 0.5);
+}
+#e-list , #e-people{
+    background-color: #425C81;
+}
+#e-list::placeholder , #e-people::placeholder{
+    color: white;
+}
+#dw-btn1, #dw-btn2{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 30px;
+    border: 1px solid #425C81;
+}
+#dw-btn1{
+    background-color: white;
+    color: rgba(0 , 0  , 0 , 0.5);
+}
+#dw-btn2{
+    background-color: #425C81;
+    color: white;
+}

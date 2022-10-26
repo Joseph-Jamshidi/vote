@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'Vazir FD-UI';
+    src: url('../font/Vazir-Regular-FD-UI.ttf');
+}
+@media only screen and (max-width: 991px) {
+    .nav-item {
+        width: 35%;
+    }
+}
+body{
+    direction: rtl;
+    background-color: #EAF8FF;
+}
+.container-fluid{
+    background-color: #A5D4DE;
+    margin: 0 16px;
+    padding: 0;
+    border-radius: 10px;
+}
+.offcanvas{
+    background-color: #A5D4DE;
+}
+ul{
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+a , a:visited , a:link{
+    color: white;
+    text-decoration: none;
+}
+.nav-item{
+    background-color: #425C81;
+    margin: 8px 8px;
+    min-width: 5%;
+    border-radius: 10px;
+}
+.nav-link{
+    text-align: center;
+    color: white;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 30px;
+    transition: all 0.3s ease-out;
+    padding: 0.25rem;
+}
+.offcanvas-title{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+}
+#sign\ up{
+    background-color: white;
+    border: 1px solid #425C81;
+    min-width: 4%;
+}
+#sign\ up a{
+    color: #425C81;
+}
+#login{
+    min-width: 4%;
+}
+#signup2{
+    color: #425C81;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+}
+.section2{
+    padding: 0 0 200px;
+    margin: 50px 0 50px;
+}
+#login2{
+    background-color: #425C81;
+}
+#login2 a{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+}
+.card{
+    border-color: #425C81;
+    margin-bottom:10px ;
+}
+.section3{
+    background-color: white;
+    padding: 2% 4%;
+    border-top: 16px solid #425C81;
+    border-bottom: 16px solid #425C81;
+}
+.in-sec3{
+    background-color: #EAF8FF;
+    box-shadow: 0 5px 13px 2px rgba(0, 0, 0, 0.43);
+    border-radius: 47px;
+    padding: 63px 0 0;
+}
+.txt{
+    background-color: #5072A4;
+    color: white;
+    border-radius: 5px;
+    margin: -15px 10px 32px 10px;
+    font-family: 'Vazir FD-UI' , sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 42px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.bt-img{
+    transform: translateY(-15%);
+    padding: 0 30px;
+}
+.article{
+    background-color: #425C81;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 15px;
+    padding: 0 0 1px ;
+    margin-bottom: 12%;
+    margin-top: 5%;
+}
+.border-bottom{
+    border-bottom: 3px solid #FFFFFF;
+}
+h1{
+    font-family: 'Vazir FD-UI' , sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 38px;
+}
+#img1{
+    position: absolute;
+    right: 0;
+    bottom: -7%;
+    z-index: -1;
+}
+#img2{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+#img3{
+    position: absolute;
+    left: 0;
+    bottom: -10%;
+    z-index: -1;
+}
+#img4{
+    position: absolute;
+    left: 0;
+    bottom: -15%;
+    z-index: -1;
+}
+#img5{
+    position: absolute;
+    right: 0;
+    bottom: -10%;
+    z-index: -1;
+}
+#img6{
+    position: absolute;
+    right: 0;
+    bottom: -10%;
+    z-index: -1;
+}
+.section4{
+    padding: 2% 4%;
+}
+.in-sec4{
+    border: 2px solid #425C81;
+}
+.header4{
+    font-family: 'Vazir FD-UI' , sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 42px;
+    color: #425C81;
+}
+.dw-btn{
+    background-color: white;
+    margin: 3%;
+    height: 300px;
+}
+#img7 , #img8{
+    position: absolute;
+    right: 0;
+    top: 0;
+}

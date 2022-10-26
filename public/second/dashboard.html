@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dashboard-style.css">
+    <script src="js/font.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b2b28b4ccb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">منوی اصلی</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav d-flex justify-content-sm-start">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">صفحه اصلی</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">خدمات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">تعرفه ها</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">درباره ما</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">تماس با ما</a>
+                        </li>
+                        <li class="nav-item me-lg-auto" id="sign up">
+                            <a class="nav-link" href="sign-up.html">ثبت نام</a>
+                        </li>
+                        <li class="nav-item" id="login">
+                            <a class="nav-link" href="login.html">ورود</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="d-md-flex gx-4 position-relative">
+        <div class="panel col-md-3 col-xl-2 me-3 mt-3 py-3">
+            <div class="text-center">
+                <img src="img/Ellipse%20655.png" alt="">
+                <div class="pt-4">
+                    <h5>نام کاربری</h5>
+                    <hr class="mx-5">
+                </div>
+            </div>
+            <ul class="navbar-nav pt-4">
+                <li class="nav-item nav-panel">
+                    <a class="nav-link text-end pe-xl-2" href="#">
+                        <img src="img/Profile.png" alt="">
+                        پروفایل
+                    </a>
+                </li>
+                <li class="nav-item nav-panel">
+                    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample">
+                        <a class="nav-link text-end pe-xl-2" href="#">
+                            <img src="img/Document.png" alt="">
+                            انتخابات های من 
+                        </a>
+                    </button>
+                    <div class="collapse" id="collapseExample">
+                        <div class="link-panel p-2 pe-4">
+                            <img class="img-fluid" src="img/circle%202.png" alt="" id="img 10">
+                            <a class="zir-panel" href="dashboard-1.html">انخابات های درحال اجرا</a>
+                        </div>
+                        <div class="link-panel p-2 pe-4">
+                            <img class="img-fluid" src="img/circle%201.png" alt="" id="img 11">
+                            <a class="zir-panel" href="dashbboard-2.html">ایجاد انتخابات جدید</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item nav-panel">
+                    <a class="nav-link text-end pe-xl-2" href="#">
+                        <img class="img-fluid" src="img/Time%20Square.png" alt="">
+                        سابقه رأی دادن
+                    </a>
+                </li>
+                <li class="nav-item nav-panel">
+                    <a class="nav-link text-end pe-xl-2" href="dashboard-3.html">
+                        <img class="img-fluid" src="img/Edit%20Square.png" alt="">
+                        لیست کاربران وارد کرده
+                    </a>
+                </li>
+                <li class="nav-item nav-panel">
+                    <a class="nav-link text-end pe-xl-2" href="#">
+                        <img class="img-fluid" src="img/Login.png" alt="">
+                        خروج از حساب کاربری
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col card mt-3 mx-3 px-3">
+            <div class="container text-center">
+                <div class="row my-2 panel-text">
+                    <div class="col text-end">
+                        <div>تاریخ عضویت</div>
+                        <div class="pe-2">00/00/00</div>
+                    </div>
+                    <div class="col text-center">
+                        <div>تاریخ امروز</div>
+                        <div class="pe-1">00/00/00</div>
+                    </div>
+                    <div class="col text-start">
+                        <div>آخرین بازدید</div>
+                        <div class="ps-2">00/00/00</div>
+                    </div>
+                </div>
+                <div class="row my-2 panel-text">
+                    <div class="col text-end d-flex align-items-center">
+                        <img src="img/Ellipse%20656.png" alt="">
+                        <div class="pe-4 ps-2">نام و نام خانوادگی</div>
+                        <div class="pe-4">شماره تلفن : 09190000000</div>
+                    </div>
+                    <div class="col text-start me-auto">
+                        <div class="nav-item my-0 me-auto" id="edit">
+                            <a class="nav-link" href="#">
+                                <img src="img/Edit.png" alt="">
+                                ویرایش پروفایل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
