@@ -1,4 +1,5 @@
 import React from 'react';
+import {UserInfo} from "../Services/info";
 import Ellipse655 from "../images/Ellipse655.png";
 import Profile from "../images/Profile.png";
 import Document from "../images/Document.png";
@@ -9,7 +10,6 @@ import TimeSquare from "../images/TimeSquare.png";
 import EditSquare from "../images/EditSquare.png";
 import Login from "../images/Login.png";
 import "../styles/Dashboard.css";
-import {fName, lName} from "../Services/info";
 
 const Dashboard = () => {
     return (
@@ -18,7 +18,7 @@ const Dashboard = () => {
                 <div className="text-center">
                     <img src={Ellipse655} alt=""/>
                     <div className="pt-4">
-                        <h5>{fName} {lName}</h5>
+                        <h5>{UserInfo.firstName} {UserInfo.lastName}</h5>
                         <hr className="mx-5"/>
                     </div>
                 </div>

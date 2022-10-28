@@ -15,6 +15,7 @@ const App = () => {
     if (token) {
         setAuthToken(token);
     }
+
     return (<div>
         <BrowserRouter>
             <Header/>
@@ -25,6 +26,7 @@ const App = () => {
                 <Route path="/UserProfile" element={<UserProfile/>}></Route>
                 <Route path="/Voting" element={<Voting/>}></Route>
                 <Route path="/CreateVote" element={<CreateVote/>}></Route>
+                <Route path="/CreateVote/:id" element={<CreateVote/>}></Route>
                 <Route path="/UserList" element={<UserList/>}></Route>
             </Routes>
         </BrowserRouter>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import "../styles/Register.css";
 import UserService from '../Services/User';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Arrow from '../images/Arrow - Left.png';
 import Profile1 from '../images/Profile1.png';
 import Stroke from '../images/Stroke.png';
@@ -19,6 +19,7 @@ const Register = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    let navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -30,7 +31,8 @@ const Register = () => {
             password: password
         };
         UserService.Register(userData).then(() => {
-            setMessage('ثبت نام با موفقیت انجام شد')
+            setMessage('ثبت نام با موفقیت انجام شد');
+            navigate("./login")
         }, err => {
             setMessage('خطایی رخ داده است');
         })

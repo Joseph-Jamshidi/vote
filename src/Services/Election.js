@@ -44,6 +44,32 @@ class ElectionService {
                 }
             })
     }
+
+    chosenElection(id) {
+        return authedAxios
+            .get(urls.election + `/${id}`)
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => {
+                if (error.data) {
+                    return Promise.reject(error.data)
+                }
+            })
+    }
+
+    editElection(id, editData) {
+        return authedAxios
+            .put(urls.election + `/${id}`, editData)
+            .then((response) => {
+                return response.data
+            })
+            .catch((error) => {
+                if (error.data) {
+                    return Promise.reject(error.data)
+                }
+            })
+    }
 }
 
 const instance = new ElectionService();

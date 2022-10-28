@@ -210,8 +210,10 @@ a.zir-panel{
 #dw-btn1{
     background-color: white;
     color: rgba(0 , 0  , 0 , 0.5);
+    width: 100%;
 }
 #dw-btn2{
     background-color: #425C81;
     color: white;
+    width: 100%;
 }

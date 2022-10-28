@@ -31,13 +31,17 @@ class UserService {
         return axios
             .post(urls.login, bodyFormData)
             .then((res) => {
+
                 const token = res.data.access_token;
                 localStorage.setItem("token", token);
-                const fName = res.data.firstName;
-                localStorage.setItem("fName", fName);
-                const lName = res.data.lastName;
-                localStorage.setItem("lName", lName);
-                window.location.href = "/";
+
+                const firstName = res.data.firstName;
+                localStorage.setItem("firstName", firstName);
+
+                const lastName = res.data.lastName;
+                localStorage.setItem("lastName", lastName);
+
+                return res.data;
             })
             .catch((err) => {
                 if (err.res) {

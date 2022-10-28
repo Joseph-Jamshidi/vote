@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Arrow from '../images/Arrow - Left.png';
 import Stroke from '../images/Stroke.png';
 import Lock from '../images/Lock.png';
@@ -9,16 +9,14 @@ import Ellipse652 from '../images/Ellipse652.png';
 import Ellipse654 from '../images/Ellipse654.png';
 import "../styles/Login.css";
 import UserService from '../Services/User';
-import {setAuthToken} from "../Services/token";
+import {token} from "../Services/info";
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const token = localStorage.getItem("token");
-    if (token) {
-        setAuthToken(token);
-    }
+    let navigate = useNavigate();
+
     const onSubmit = (e) => {
         e.preventDefault();
         const loginInfo = {
@@ -26,8 +24,11 @@ const Login = () => {
             userName: username,
             password: password
         };
-        UserService.Login(loginInfo).then(() => {
-            if (!token) {
+        UserService.Login(loginInfo).then((to) => {
+            if (to.access_token) {
+                window.location.href = "./"
+                alert("خوش آمدید")
+            } else {
                 setMessage("نام کاربری یا رمز عبور اشتباه است");
             }
         })
@@ -68,7 +69,8 @@ const Login = () => {
                         </label>
                     </div>
                     <div className="text-center mt-5 mb-3">
-                        <button className="btn login-btn col-11 py-2 mb-0" type="submit" onClick={onSubmit}>ورود</button>
+                        <button className="btn login-btn col-11 py-2 mb-0" type="submit" onClick={onSubmit}>ورود
+                        </button>
                     </div>
                 </form>
             </div>

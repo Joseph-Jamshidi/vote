@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {token} from "../Services/info";
-import {fName} from "../Services/info";
-import {lName} from "../Services/info";
+import {token, UserInfo} from "../Services/info";
 
 const Header = () => {
     const logOut = () => {
@@ -40,18 +38,20 @@ const Header = () => {
                                         </li>
                                 }
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">تعرفه ها</a>
+                                    <Link className="nav-link" to="">تعرفه ها</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">درباره ما</a>
+                                    <Link className="nav-link" to="">درباره ما</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">تماس با ما</a>
+                                    <Link className="nav-link" to="">تماس با ما</Link>
                                 </li>
                                 {
                                     token ?
                                         <li className="nav-item ms-lg-auto" id="sign up">
-                                            <Link className="nav-link" to=''>{fName} {lName}</Link>
+                                            <Link className="nav-link"
+                                                  to=''>{UserInfo.firstName} {UserInfo.lastName}
+                                            </Link>
                                         </li>
                                         :
                                         <li className="nav-item ms-lg-auto" id="sign up">

@@ -4,11 +4,8 @@ export const token = localStorage.getItem("token");
 if (token) {
     setAuthToken(token);
 }
-export const fName = localStorage.getItem("fName");
-if (fName) {
-    setAuthToken(fName);
-}
-export const lName = localStorage.getItem("lName");
-if (lName) {
-    setAuthToken(lName);
-}
+
+export const firstName = localStorage.getItem("firstName");
+export const lastName = localStorage.getItem("lastName");
+
+export const UserInfo = {firstName:firstName,lastName:lastName}
