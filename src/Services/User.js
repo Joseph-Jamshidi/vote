@@ -1,14 +1,10 @@
 import axios from "axios";
-import authedAxios from "./axiosProvider";
-
 import {API_BASE_URL} from "../Constants/ApiConstants";
-
 
 const urls = {
     register: API_BASE_URL + 'Users/register',
     login: API_BASE_URL + 'Users/Token',
-    forgotPassword: '',
-    election: API_BASE_URL + 'Election'
+    forgotPassword: ''
 }
 
 class UserService {
@@ -41,7 +37,7 @@ class UserService {
                 localStorage.setItem("fName", fName);
                 const lName = res.data.lastName;
                 localStorage.setItem("lName", lName);
-                /*window.location.href = "/";*/
+                window.location.href = "/";
             })
             .catch((err) => {
                 if (err.res) {
@@ -50,18 +46,6 @@ class UserService {
             })
     }
 
-    Election(createElection) {
-        return authedAxios
-            .post(urls.election, createElection)
-            .then((res) => {
-                return res.data;
-            })
-            .catch((err) => {
-                if (err.data) {
-                    return Promise.reject(err.res)
-                }
-            })
-    }
 }
 
 const instance = new UserService();

@@ -4,11 +4,11 @@ import Login from "./Pages/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Main from "./Pages/Main";
 import {setAuthToken} from "./Services/token";
-import UserProfile from "./Pages/UserProfile";
 import Voting from "./Pages/Voting";
 import CreateVote from "./Pages/CreateVote";
 import UserList from "./Pages/UserList";
 import Header from "./layout/Header";
+import UserProfile from "./Pages/UserProfile";
 
 const App = () => {
     const token = localStorage.getItem("token");

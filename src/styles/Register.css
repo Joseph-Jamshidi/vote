@@ -38,7 +38,7 @@ a , a:visited , a:link{
 .login-form{
     margin: 20px 16px 0 16px;
 }
-.btn{
+.reg-btn{
     background-color: #425C81;
     border-radius: 4px;
     margin: 0 16px 48px;
@@ -48,8 +48,9 @@ a , a:visited , a:link{
     font-weight: 700;
     font-size: 22px;
     line-height: 34px;
+    color: white;
 }
-.btn:hover{
+.reg-btn:hover{
     background-color: #425C81;
     color: silver;
     transition: all 0.3s ease-out;

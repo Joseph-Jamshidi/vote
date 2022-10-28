@@ -41,6 +41,9 @@ const Login = () => {
     return (
         <div>
             <div className="mx-auto login-page col-lg-4 col-md-6 col-11">
+                <div className="text-center pt-2 link-danger">
+                    {message}
+                </div>
                 <div className="d-flex mt-4 ms-2">
                     <Link to="/">
                         <img src={Arrow} className="mt-2" alt=""/>
@@ -65,12 +68,9 @@ const Login = () => {
                         </label>
                     </div>
                     <div className="text-center mt-5 mb-3">
-                        <button className="btn col-11 py-2" type="submit" onClick={onSubmit}>ورود</button>
+                        <button className="btn login-btn col-11 py-2 mb-0" type="submit" onClick={onSubmit}>ورود</button>
                     </div>
                 </form>
-                <div className="text-center">
-                    {message}
-                </div>
             </div>
             <img src={Vector} alt="" className="b-left d-md-block d-none"/>
             <img src={Ellipse653} alt="" className="b-left d-md-block d-none"/>

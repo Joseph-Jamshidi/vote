@@ -103,7 +103,7 @@ const Register = () => {
                         </label>
                     </div>
                     <div className="text-center mt-5">
-                        <button className="btn col-11 py-2" type="submit" onClick={onSubmit}>
+                        <button className="btn reg-btn col-11 py-2 mb-0" type="submit" onClick={onSubmit}>
                             ثبت نام
                         </button>
                     </div>

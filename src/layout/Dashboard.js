@@ -30,7 +30,7 @@ const Dashboard = () => {
                         </a>
                     </li>
                     <li className="nav-item nav-panel">
-                        <button className="btn" type="button" data-bs-toggle="collapse"
+                        <button className="btn dash-btn" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseExample">
                             <a className="nav-link text-start ps-xl-2" href="src/Pages/UserProfile#">
                                 <img src={Document} alt=""/>

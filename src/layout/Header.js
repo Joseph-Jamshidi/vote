@@ -29,9 +29,16 @@ const Header = () => {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/">صفحه اصلی</Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="./UserProfile">خدمات</Link>
-                                </li>
+                                {
+                                    token ?
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to="./UserProfile">خدمات</Link>
+                                        </li>
+                                        :
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to="./Login">خدمات</Link>
+                                        </li>
+                                }
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">تعرفه ها</a>
                                 </li>

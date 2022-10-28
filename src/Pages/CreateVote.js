@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import UserService from '../Services/User';
+import ElectionService from '../Services/Election'
 import Ellipse656 from "../images/Ellipse656.png";
 import Edit from "../images/Edit.png";
 import "../styles/CreateVote.css"
@@ -8,6 +8,8 @@ import {fName, lName} from "../Services/info";
 import DatePicker, {DateObject} from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import persian_en from "react-date-object/locales/persian_en";
+import gregorian from "react-date-object/calendars/gregorian";
 
 const CreateVote = () => {
     const [name, setName] = useState("");
@@ -29,19 +31,18 @@ const CreateVote = () => {
             candidateCount: candidateCount,
             userVoteCount: userVoteCount
         };
-        UserService.Election(createElection).then()
+        ElectionService.addElection(createElection).then()
     }
-    const onStartDateHandler = (value) => {
-        const starting = {value, format: "DD/MM/YYYY"};
-        const startingDate = new DateObject(starting).format();
-        setStartDate(startingDate)
+    const onStartDateHandler = (date) => {
+        const object = {date, format: "YYYY-MM-DD"}
+        const sDay = {gregorian: new DateObject(object).convert(gregorian, persian_en).format()}
+        setStartDate(sDay.gregorian)
     };
-    const onEndDateHandler = (value) => {
-        const ending = {value, format: "YYYY-MM-DD"};
-        const endingDate = new DateObject(ending).format();
-        setEndDate(endingDate);
+    const onEndDateHandler = (date) => {
+        const object = {date, format: "YYYY-MM-DD"};
+        const eDay = {gregorian: new DateObject(object).convert(gregorian, persian_en).format()};
+        setEndDate(eDay.gregorian);
     };
-
     return (<div>
         <section className="d-md-flex gx-4">
             <Dashboard/>
