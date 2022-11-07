@@ -12,11 +12,6 @@ import persian_en from "react-date-object/locales/persian_en";
 import gregorian from "react-date-object/calendars/gregorian";
 import {useParams} from "react-router-dom";
 import InputIcon from "react-multi-date-picker/components/input_icon";
-fuck
-
-
-
-
 
 const CreateVote = () => {
     const [name, setName] = useState("");
