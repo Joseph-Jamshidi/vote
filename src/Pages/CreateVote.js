@@ -12,6 +12,11 @@ import persian_en from "react-date-object/locales/persian_en";
 import gregorian from "react-date-object/calendars/gregorian";
 import {useParams} from "react-router-dom";
 import InputIcon from "react-multi-date-picker/components/input_icon";
+fuck
+
+
+
+
 
 const CreateVote = () => {
     const [name, setName] = useState("");
@@ -172,36 +177,22 @@ const CreateVote = () => {
                                     <div className="text-start col-md-6 col-lg-4 my-2">
                                         <label className="form-label" htmlFor="e-nomines">4.تعداد کاندید های
                                             انتخابات:</label>
-                                        <select className="form-select" id="e-nomines"
-                                            // defaultValue={selectedElection.candidateCount}
-                                                onChange={(e) => {
-                                                    setCandidateCount(e.target.value)
-                                                }}>
-                                            <option defaultValue={"0"}>انتخاب کنید</option>
-                                            <option selected={selectedElection.candidateCount === 1} value="1">1
-                                            </option>
-                                            <option selected={selectedElection.candidateCount === 2} value="2">2
-                                            </option>
-                                            <option selected={selectedElection.candidateCount === 3} value="3">3
-                                            </option>
-                                            <option selected={selectedElection.candidateCount === 4} value="4">4
-                                            </option>
-                                        </select>
+                                        <input className="form-control text-start" min="1" type="number" id="e-nomines"
+                                               defaultValue={selectedElection.candidateCount}
+                                               placeholder="تعداد کاندید ها را وارد کنید"
+                                               onChange={(e) => {
+                                                   setCandidateCount(e.target.value)
+                                               }}/>
                                     </div>
                                     <div className="text-start col-md-6 col-lg-4 my-2">
                                         <label className="form-label" htmlFor="e-count">5.تعداد رأی برای هر
                                             کاربر:</label>
-                                        <select className="form-select" id="e-count"
-                                                defaultValue={selectedElection.userVoteCount}
-                                                onChange={(e) => {
-                                                    setUserVoteCount(e.target.value)
-                                                }}>
-                                            <option defaultValue={"0"}>انتخاب کنید</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                        </select>
+                                        <input className="form-control text-start" min="1" type="number" id="e-count"
+                                               defaultValue={selectedElection.userVoteCount}
+                                               placeholder="تعداد رأی را وارد کنید"
+                                               onChange={(e) => {
+                                                   setUserVoteCount(e.target.value)
+                                               }}/>
                                     </div>
                                     <div className="text-start col-md-4 col-lg-4 my-2">
                                         <label className="form-label">6.رأی گیری مخفی:</label>
