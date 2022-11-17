@@ -22,6 +22,7 @@ const CreateVote = () => {
     const [candidateCount, setCandidateCount] = useState("");
     const [userVoteCount, setUserVoteCount] = useState("");
     const [selectedElection, setSelectedElection] = useState("");
+    const [ownerId, setOwnerId] = useState("");
 
     const params = useParams();
 
@@ -33,6 +34,9 @@ const CreateVote = () => {
                 setSelectedElection(selected);
                 setCandidateCount(selected.candidateCount);
                 setUserVoteCount(selected.userVoteCount);
+                setIsEnabled(selected.isEnabled);
+                setIsVoterHidden(selected.isVoterHidden);
+                setOwnerId(selected.ownerId);
             })
         }
     }, []);
@@ -48,16 +52,13 @@ const CreateVote = () => {
             candidateCount: candidateCount,
             userVoteCount: userVoteCount,
             id: params.id ? params.id : 0,
+            ownerId: params.id ? ownerId : 0
         };
         if (createElection.id) {
-            //DO EDIT
-
             ElectionService.editElection(createElection.id, createElection).then(() => {
                 alert("edited")
             });
         } else {
-            //DO ADD
-
             ElectionService.addElection(createElection).then((data) => {
                 alert(data.message)
                 e.target.reset()
@@ -65,13 +66,11 @@ const CreateVote = () => {
         }
     };
 
-    const handleIsEnabled = (e) => {
-        // setIsEnabled(e.target.value)
+    const handleIsEnabled = () => {
         setIsEnabled(!isEnabled)
     };
 
-    const handleIsVoterHidden = (e) => {
-        setIsVoterHidden(e.target.value)
+    const handleIsVoterHidden = () => {
         setIsVoterHidden(!isVoterHidden)
     };
 
@@ -86,8 +85,6 @@ const CreateVote = () => {
         const eDay = {gregorian: new DateObject(object).convert(gregorian, persian_en).format()};
         setEndDate(eDay.gregorian);
     };
-
-    console.log(candidateCount);
 
     return (
         <div>
@@ -197,12 +194,11 @@ const CreateVote = () => {
                                                     <input className="form-check-input" type="checkbox"
                                                            role="switch" id="flexSwitchCheckDefault"
                                                            onChange={handleIsEnabled}
-                                                           defaultValue={isEnabled}
-                                                        // defaultChecked={isEnabled}
+                                                           defaultChecked={!isEnabled}
                                                     />
                                                     <label className="form-check-label"
                                                            htmlFor="flexSwitchCheckDefault">
-                                                        {isEnabled === true ? "خیر" : "بله"}
+                                                        {isEnabled === true ? "بله" : "خیر"}
                                                     </label>
                                                 </div>
                                             </div>
@@ -214,7 +210,7 @@ const CreateVote = () => {
                                                 <input className="form-check-input" type="checkbox"
                                                        role="switch" id="flexSwitchCheckDefault"
                                                        onChange={handleIsVoterHidden}
-                                                       defaultChecked={selectedElection.isVoterHidden}/>
+                                                       defaultChecked={!isVoterHidden}/>
                                                 <label className="form-check-label"
                                                        htmlFor="flexSwitchCheckDefault">
                                                     {isVoterHidden === true ? "فعال" : "غیر فعال"}

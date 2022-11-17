@@ -14,14 +14,14 @@ class ElectionService {
             })
             .catch((err) => {
                 if (err.data) {
-                    return Promise.reject(err.res)
+                    return Promise.reject(err.data)
                 }
             })
     }
 
-    takeElection() {
+    takeElection(page, size) {
         return authedAxios
-            .get(urls.election)
+            .get(urls.election + `?Page=${page}&Size=${size}`)
             .then((response) => {
                 return response.data;
             })
@@ -60,7 +60,7 @@ class ElectionService {
 
     editElection(id, editData) {
         return authedAxios
-            .put(urls.election + `/${id}`, editData)
+            .put(urls.election, editData)
             .then((response) => {
                 return response.data
             })

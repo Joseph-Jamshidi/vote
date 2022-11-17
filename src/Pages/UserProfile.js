@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Ellipse656 from "../images/Ellipse656.png";
 import Edit from "../images/Edit.png";
 import "../styles/UserProfile.css";
 import Dashboard from "../layout/Dashboard";
+import UserService from "../Services/User";
+import {UserInfo} from "../Services/info";
 
 const UserProfile = () => {
+    const [userInfo, setUserInfo] = useState([]);
+
+    useEffect(() => {
+        UserService.Profile(UserInfo.userId).then((i) => {
+            setUserInfo(i.data)
+        })
+    },[]);
+    console.log(UserInfo.userId)
     return (
         <div>
             <section className="d-md-flex gx-4 position-relative">
@@ -41,6 +51,7 @@ const UserProfile = () => {
                             </div>
                         </div>
                     </div>
+                    <div>hi</div>
                 </div>
             </section>
         </div>

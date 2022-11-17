@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const authedAxios =axios.create();
+const authedAxios = axios.create();
 authedAxios.interceptors.request.use(
     async config => {
-
         config.headers = {
             'Authorization': `Bearer ${refreshToken()}`,
             'Accept': 'application/json'
@@ -21,7 +20,7 @@ authedAxios.interceptors.response.use((response) => {
     const originalRequest = error.config;
     if (error.response.status === 403 && !originalRequest._retry) {
         originalRequest._retry = true;
-        const access_token =  refreshToken();
+        const access_token = refreshToken();
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
         return authedAxios(originalRequest);
     }
@@ -30,7 +29,7 @@ authedAxios.interceptors.response.use((response) => {
 
 function refreshToken() {
 
-    if(!localStorage.getItem("token")) {
+    if (!localStorage.getItem("token")) {
         // history.pushState({},"home","/Home");
 
     }

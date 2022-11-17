@@ -31,10 +31,6 @@ ul{
     width: 100%;
     padding: 0;
 }
-a , a:visited , a:link{
-    color: white;
-    text-decoration: none;
-}
 .nav-item{
     background-color: #425C81;
     margin: 8px 8px;
@@ -147,4 +143,48 @@ a.zir-panel{
     color: #425C81;
     width: fit-content;
     border: 1px dashed #425C81;
+}
+.page-link{
+    background-color: #425C81;
+    color: white;
+    border-radius: 13px!important;
+    border: 1.5px solid #fff;
+}
+.page-link:hover{
+    border: 1.5px solid #5072A4;
+}
+.page-link.active{
+    background-color: white;
+    color: #5072A4;
+}
+.manage-btn{
+    background-color: #425C81;
+    color: white;
+    font-size: 13px;
+}
+.manage-btn:hover{
+    color: #425C81;
+}
+td{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 25px;
+    color: #425C81;
+}
+th{
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 25px;
+    background-color: #EAF8FF;
+}
+.for-table{
+    border: 1px solid #425C81;
+    border-radius: 6px;
+}
+.th-border{
+    border-bottom: 1px solid #425c81;
 }

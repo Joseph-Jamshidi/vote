@@ -12,6 +12,10 @@ import Login from "../images/Login.png";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {
+    const logOut = () => {
+        localStorage.clear();
+        window.location.href = "/"
+    }
     return (
         <>
             <div className="panel col-md-3 col-xl-2 ms-md-3 mx-3 mt-3 py-3">
@@ -24,18 +28,18 @@ const Dashboard = () => {
                 </div>
                 <ul className="navbar-nav pt-4">
                     <li className="nav-item nav-panel">
-                        <a className="nav-link text-start ps-xl-2" href="src/Pages/UserProfile#">
+                        <Link className="nav-link text-start ps-xl-2" href="src/Pages/UserProfile#">
                             <img src={Profile} alt=""/>
                             پروفایل
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item nav-panel">
                         <button className="btn dash-btn" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseExample">
-                            <a className="nav-link text-start ps-xl-2" href="src/Pages/UserProfile#">
+                            <Link className="nav-link text-start ps-xl-2" href="src/Pages/UserProfile#">
                                 <img src={Document} alt=""/>
                                 انتخابات های من
-                            </a>
+                            </Link>
                         </button>
                         <div className="collapse" id="collapseExample">
                             <div className="link-panel p-2 ps-4">
@@ -49,10 +53,10 @@ const Dashboard = () => {
                         </div>
                     </li>
                     <li className="nav-item nav-panel">
-                        <a className="nav-link text-start ps-xl-2" href="src/Pages/UserProfile#">
+                        <Link className="nav-link text-start ps-xl-2" href="src/Pages/UserProfile#">
                             <img className="img-fluid" src={TimeSquare} alt=""/>
                             سابقه رأی دادن
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item nav-panel">
                         <Link className="nav-link text-start ps-xl-2" to="../UserList">
@@ -61,10 +65,10 @@ const Dashboard = () => {
                         </Link>
                     </li>
                     <li className="nav-item nav-panel">
-                        <a className="nav-link text-start ps-xl-2" href="src/Pages/UserProfile#">
+                        <Link className="nav-link text-start ps-xl-2" onClick={logOut}>
                             <img className="img-fluid" src={Login} alt=""/>
                             خروج از حساب کاربری
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>

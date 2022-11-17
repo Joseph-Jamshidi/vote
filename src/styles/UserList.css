@@ -31,10 +31,6 @@ ul{
     width: 100%;
     padding: 0;
 }
-a , a:visited , a:link{
-    color: white;
-    text-decoration: none;
-}
 .nav-item{
     background-color: #425C81;
     margin: 8px 8px;

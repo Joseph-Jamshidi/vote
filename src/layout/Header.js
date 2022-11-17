@@ -30,7 +30,7 @@ const Header = () => {
                                 {
                                     token ?
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="./UserProfile">خدمات</Link>
+                                            <Link className="nav-link" to="./Voting">خدمات</Link>
                                         </li>
                                         :
                                         <li className="nav-item">
@@ -38,13 +38,13 @@ const Header = () => {
                                         </li>
                                 }
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="">تعرفه ها</Link>
+                                    <Link className="nav-link">تعرفه ها</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="">درباره ما</Link>
+                                    <Link className="nav-link">درباره ما</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="">تماس با ما</Link>
+                                    <Link className="nav-link">تماس با ما</Link>
                                 </li>
                                 {
                                     token ?

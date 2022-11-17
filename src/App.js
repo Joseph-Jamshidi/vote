@@ -9,6 +9,9 @@ import CreateVote from "./Pages/CreateVote";
 import UserList from "./Pages/UserList";
 import Header from "./layout/Header";
 import UserProfile from "./Pages/UserProfile";
+import CandidateManagement from "./Pages/CandidateManagement";
+import VoterManagement from "./Pages/VoterManagement";
+import AddVoter from "./Pages/AddVoter";
 
 const App = () => {
     const token = localStorage.getItem("token");
@@ -28,6 +31,11 @@ const App = () => {
                 <Route path="/CreateVote" element={<CreateVote/>}></Route>
                 <Route path="/CreateVote/:id" element={<CreateVote/>}></Route>
                 <Route path="/UserList" element={<UserList/>}></Route>
+                <Route path="/CandidateManagement" element={<CandidateManagement/>}></Route>
+                <Route path="/CandidateManagement/:id" element={<CandidateManagement/>}></Route>
+                <Route path="/VoterManagement" element={<VoterManagement/>}></Route>
+                <Route path="/VoterManagement/:id" element={<VoterManagement/>}></Route>
+                <Route path="/AddVoter" element={<AddVoter/>}></Route>
             </Routes>
         </BrowserRouter>
     </div>);

@@ -14,10 +14,6 @@ body{
     direction: rtl;
     background-color: #EAF8FF;
 }
-a , a:visited , a:link{
-    color: white;
-    text-decoration: none;
-}
 .login-page{
     border-top: 16px solid #425C81;
     border-bottom: 16px solid #425C81;

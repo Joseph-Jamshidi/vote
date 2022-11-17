@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import Arrow from '../images/Arrow - Left.png';
 import Stroke from '../images/Stroke.png';
 import Lock from '../images/Lock.png';
@@ -9,13 +9,11 @@ import Ellipse652 from '../images/Ellipse652.png';
 import Ellipse654 from '../images/Ellipse654.png';
 import "../styles/Login.css";
 import UserService from '../Services/User';
-import {token} from "../Services/info";
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    let navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();

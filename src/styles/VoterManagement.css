@@ -1,0 +1,14 @@
+.add-btn{
+    background-color: #425C81;
+    color: white;
+    text-align: center;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 30px;
+    padding: 4px;
+}
+.add-btn:hover{
+    background-color: #425C81;
+}
