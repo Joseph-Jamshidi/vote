@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../styles/style.css";
 import Group from "../images/Group.png";
 import Vector from "../images/Vector.png";
@@ -14,21 +14,60 @@ import Ellipse647 from "../images/Ellipse647.png";
 import Ellipse648 from "../images/Ellipse648.png";
 import {Link} from "react-router-dom";
 import {setAuthToken} from "../Services/token";
+import ElectionService from "../Services/Election"
+import {DateObject} from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_en from "react-date-object/locales/persian_en";
 
-const Main = () => {
+const HomePage = () => {
+    const [votableElections, setVotableElections] = useState([])
+
+    useEffect(() => {
+        ElectionService.votableElection().then((r) => {
+            setVotableElections(prepareData(r.data));
+        })
+    }, []);
+
     const token = localStorage.getItem("token");
     if (token) {
         setAuthToken(token);
     }
+
+    const prepareData = (votableElections) => {
+        return votableElections.map((v) => {
+            v.persianStartDate = convertTime(v.startDate);
+            v.persianEndDate = convertTime(v.endDate);
+            return v;
+        })
+    }
+
+    const convertTime = (date) => {
+        const dateObj = new Date(date);
+        const object = {dateObj, format: "YYYY-MM-DD"}
+        const persianDate = new DateObject(object).convert(persian, persian_en).format();
+        return (persianDate)
+    }
+
+    console.log(votableElections)
+
     return (
         <div>
             <div className="position-relative section2">
                 <div className="container">
                     <div className="row d-flex justify-content-md-around">
-                        <div className="col-lg-5 mt-auto mb-auto text-lg-start text-center">
-                            <h1 className="d-inline-block border-bottom">متن ساختگی</h1>
-                            <p>چاپ و بااستفاده از طراحان گرافیک</p>
-                            <p>چاپ و بااستفاده از طراحان گرافیک</p>
+                        <div className="col-lg-6 text-lg-start text-center">
+                            {
+                                votableElections.map((ve) =>
+                                    <div className="cardElection d-flex justify-content-between my-2" key={ve.id}>
+                                        <span className="align-">{ve.name}</span>
+                                        <span>{ve.persianStartDate}</span>
+                                        <span>{ve.persianEndDate}</span>
+                                        <Link className="px-sm-0 voteButton" id="">
+                                            <span>شرکت در انتخابات</span>
+                                        </Link>
+                                    </div>
+                                )
+                            }
                             <div className="container px-0 mt-5 text-center">
                                 <div className="row gx-5 d-flex justify-content-center justify-content-lg-start">
                                     <div className="col-lg-3 col-md-6 col-sm-8">
@@ -112,4 +151,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default HomePage;

@@ -7,14 +7,14 @@ import UserService from "../Services/User";
 import {UserInfo} from "../Services/info";
 
 const UserProfile = () => {
-    const [userInfo, setUserInfo] = useState([]);
+    const [userInformation, setUserInformation] = useState([]);
 
     useEffect(() => {
         UserService.Profile(UserInfo.userId).then((i) => {
-            setUserInfo(i.data)
+            setUserInformation(i.data);
         })
-    },[]);
-    console.log(UserInfo.userId)
+    }, []);
+
     return (
         <div>
             <section className="d-md-flex gx-4 position-relative">
@@ -51,7 +51,23 @@ const UserProfile = () => {
                             </div>
                         </div>
                     </div>
-                    <div>hi</div>
+                    <div className="container mt-3">
+                        <h5>پروفایل کاربری</h5>
+                        <div className="container row">
+                            <div className="col-sm-6 mt-3">
+                                نام: {userInformation.firstName}
+                            </div>
+                            <div className="col-sm-6 mt-3">
+                                نام خانوادگی: {userInformation.lastName}
+                            </div>
+                            <div className="col-sm-6 mt-3">
+                                کد ملی: {userInformation.nationalCode}
+                            </div>
+                            <div className="col-sm-6 mt-3">
+                                شماره تلفن: {userInformation.phoneNumber}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

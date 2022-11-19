@@ -37,7 +37,7 @@ class VoterService {
 
 
 
-    getVoter(electionId, page, size) {
+    getVoterList(electionId, page, size) {
         return authedAxios
             .get(urls.voters + `?electionId=${electionId}&Page=${page}&Size=${size}`)
             .then((response) => {

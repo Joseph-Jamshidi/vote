@@ -2,7 +2,8 @@ import authedAxios from "./axiosProvider";
 import {API_BASE_URL} from "../Constants/ApiConstants";
 
 const urls = {
-    election: API_BASE_URL + 'Election'
+    election: API_BASE_URL + 'Election',
+    votableElection: API_BASE_URL + 'Election/VotableElection'
 }
 
 class ElectionService {
@@ -70,7 +71,20 @@ class ElectionService {
                 }
             })
     }
+
+    votableElection() {
+        return authedAxios
+            .get(urls.votableElection)
+            .then((response) => {
+                return response.data
+            })
+            .catch((error) => {
+                if (error.data) {
+                    return Promise.reject(error.data)
+                }
+            })
+    }
 }
 
-const instance = new ElectionService();
+    const instance = new ElectionService();
 export default instance;

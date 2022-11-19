@@ -18,13 +18,15 @@ const CandidateModal = (props) => {
             description,
             isEnabled: isEnabled,
             electionId: params.id,
-            id: props.selected ? props.selected.id : 0
+            id: props.selectedCandidate ? props.selectedCandidate.id : 0
         };
-        if (props.selected) {
-            CandidateService.editCandidate(props.selected.id, addCandidate).then((res) => {
-                alert("fuck you")
+
+        if (props.selectedCandidate) {
+            CandidateService.editCandidate(props.selectedCandidate.id, addCandidate).then((res) => {
+                alert(res.message)
                 if (res.statusCode === 'Success') {
                     itemRef.current.click();
+                    props.setIsUpdating(!props.isUpdating);
                 }
             })
         } else {
@@ -35,7 +37,7 @@ const CandidateModal = (props) => {
                 setIsEnabled("");
                 if (data.statusCode === 'Success') {
                     itemRef.current.click();
-                    props.onSave(data)
+                    props.setIsUpdating(!props.isUpdating);
                 }
             })
         }
@@ -47,7 +49,7 @@ const CandidateModal = (props) => {
 
     const cancelAdding = (e) => {
         e.preventDefault();
-        props.setSelected("")
+        props.setSelectedCandidate("")
         setName("");
         setDescription("");
         setIsEnabled("");
@@ -71,7 +73,7 @@ const CandidateModal = (props) => {
                                            className="col-form-label">نام و نام خانوادگی:</label>
                                     <input type="text" className="form-control" id="recipient-name"
                                            onChange={(e) => setName(e.target.value)}
-                                           defaultValue={name}/>
+                                           defaultValue={props.selectedCandidate.name}/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="message-text" className="col-form-label">توضیحات:</label>

@@ -10,10 +10,11 @@ const CandidateManagement = () => {
 
     const [candidate, setCandidate] = useState([]);
     const [delId, setDelId] = useState("");
-    const [selected, setSelected] = useState("");
+    const [selectedCandidate, setSelectedCandidate] = useState("");
     const [page, setPage] = useState(1);
     const [size, setSize] = useState(10);
     const [pageNumber, setPageNumber] = useState("");
+    const [isUpdating, setIsUpdating] = useState(false);
     const editRef = useRef(null);
 
     useEffect(() => {
@@ -21,13 +22,13 @@ const CandidateManagement = () => {
             setCandidate(r.data);
             setPageNumber(r.total);
         })
-    }, [size, page]);
+    }, [size, page, isUpdating]);
 
     const editCandidate = (e, id) => {
         e.preventDefault();
         editRef.current.click();
         CandidateService.chosenCandidate(id).then((res) => {
-            setSelected(res.data)
+            setSelectedCandidate(res.data)
         })
     };
 
@@ -48,6 +49,7 @@ const CandidateManagement = () => {
             setCandidate(del);
             setDelId("");
             alert(r.message);
+            setIsUpdating(!isUpdating);
         })
     };
 
@@ -67,17 +69,22 @@ const CandidateManagement = () => {
         setCandidate([...candidate])
     };
 
+    const addClick = () => {
+        setSelectedCandidate({});
+    }
+
     return (
         <>
             <section className="d-md-flex gx-4">
                 <Dashboard/>
-                <CandidateModal onSave={saveHandler} selected={selected} setSelected={setSelected}/>
+                <CandidateModal onSave={saveHandler} selectedCandidate={selectedCandidate}
+                                setSelectedCandidate={setSelectedCandidate} isUpdating={isUpdating} setIsUpdating={setIsUpdating}/>
                 <div className="col mt-3 mx-3 px-3 sec">
                     <div className="text-start p-2 my-2" id="cp-1">
                         لیست کاندیدها
                     </div>
                     <button type="button" className="btn add-btn" data-bs-toggle="modal" ref={editRef}
-                            data-bs-target="#staticBackdrop1">
+                            data-bs-target="#staticBackdrop1" onClick={addClick}>
                         <img src={AddUser} className="pe-1" alt=""/>
                         اضافه کردن
                     </button>

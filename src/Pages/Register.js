@@ -19,6 +19,7 @@ const Register = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [alreadyRegistered, setAlreadyRegistered] = useState('');
     let navigate = useNavigate();
 
     const onSubmit = (e) => {
@@ -30,11 +31,17 @@ const Register = () => {
             phoneNumber: phoneNumber,
             password: password
         };
-        UserService.Register(userData).then(() => {
-            setMessage('ثبت نام با موفقیت انجام شد');
-            navigate("./login")
-        }, err => {
-            setMessage('خطایی رخ داده است');
+        UserService.checkUserDuplicate(phoneNumber).then((r) => {
+            if (r.data.data === true) {
+                setAlreadyRegistered("این شماره موبایل قبلا ثبت شده است");
+            } else {
+                UserService.Register(userData).then((r) => {
+                    setMessage(r.message);
+                    navigate("./login")
+                }, err => {
+                    setMessage(r.meesage);
+                })
+            }
         })
     };
 
@@ -56,12 +63,13 @@ const Register = () => {
 
     return (
         <div>
-            <div className="mx-auto login-page col-lg-4 col-md-6 col-11">
+            <div className="mx-auto login-page col-xl-4 col-lg-5 col-md-6 col-11">
                 <div className="d-flex mt-4 ms-2">
                     <Link to='/'>
                         <img src={Arrow} className="mt-2" alt=""/>
                     </Link>
                     <div id="enter">ثبت نام</div>
+                    <p className="alert-danger">{alreadyRegistered}</p>
                 </div>
                 <form className="login-form">
                     <div className="form-floating mb-4">

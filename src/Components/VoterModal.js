@@ -1,8 +1,8 @@
 import React, {useRef, useState} from 'react';
 import {useParams} from "react-router-dom";
-import Vote from "../Services/Candidate";
+import Vote from "../Services/Vote";
 
-const VoterModal = () => {
+const VoterModal = (props) => {
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -28,6 +28,7 @@ const VoterModal = () => {
         Vote.addVoter(addVoter).then((data) => {
             alert(data.message);
             itemRef.current.click();
+            props.setIsUpdating(!props.isUpdating);
         })
     };
 

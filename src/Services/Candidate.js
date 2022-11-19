@@ -3,8 +3,7 @@ import {API_BASE_URL} from "../Constants/ApiConstants";
 
 const urls = {
     candidate: API_BASE_URL + 'Candidate',
-    voters: API_BASE_URL + 'Election/VoterList',
-    addVoter: API_BASE_URL + 'Election/AddVoter'
+    voters: API_BASE_URL + 'Election/VoterList'
 }
 
 class CandidateService {
@@ -38,32 +37,6 @@ class CandidateService {
     deleteCandidate(id) {
         return authedAxios
             .delete(urls.candidate + `/${id}`)
-            .then((response) => {
-                return response.data
-            })
-            .catch((error) => {
-                if (error.data) {
-                    return Promise.reject(error.data)
-                }
-            })
-    }
-
-    addVoter(addVoter) {
-        return authedAxios
-            .post(urls.addVoter, addVoter)
-            .then((res) => {
-                return res.data
-            })
-            .catch((error) => {
-                if (error.data) {
-                    return Promise.reject(error.data)
-                }
-            })
-    }
-
-    getVoter(electionId, page, size) {
-        return authedAxios
-            .get(urls.voters + `?electionId=${electionId}&Page=${page}&Size=${size}`)
             .then((response) => {
                 return response.data
             })

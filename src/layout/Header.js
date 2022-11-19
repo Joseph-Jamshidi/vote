@@ -48,11 +48,35 @@ const Header = () => {
                                 </li>
                                 {
                                     token ?
-                                        <li className="nav-item ms-lg-auto" id="sign up">
-                                            <Link className="nav-link"
-                                                  to=''>{UserInfo.firstName} {UserInfo.lastName}
-                                            </Link>
-                                        </li>
+                                        <div className="nav-item ms-lg-auto" id="sign up">
+                                            <div className="dropdown-center d-lg-block d-none">
+                                                <button className="btn dropdown-toggle" type="button"
+                                                        data-bs-toggle="dropdown" data-bs-auto-close="true"
+                                                        aria-expanded="false">
+                                                    {UserInfo.firstName} {UserInfo.lastName}
+                                                </button>
+                                                <ul className="dropdown-menu dropdown-menu-end">
+                                                    <li>
+                                                        <Link className="dropdown-item" to='./UserProfile'>ویرایش
+                                                            اطلاعات
+                                                            کاربری</Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link className="dropdown-item" to='./resetPassword'>تغییر رمز
+                                                            عبور</Link>
+                                                    </li>
+                                                    <li onClick={logOut}>
+                                                        <Link className="dropdown-item" to=''>خروج</Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div className="d-block d-lg-none">
+                                                <li>
+                                                    <Link className="nav-link"
+                                                          to={''}>{UserInfo.firstName} {UserInfo.lastName}</Link>
+                                                </li>
+                                            </div>
+                                        </div>
                                         :
                                         <li className="nav-item ms-lg-auto" id="sign up">
                                             <Link className="nav-link" to='./Register'>ثبت نام</Link>
@@ -60,10 +84,32 @@ const Header = () => {
                                 }
                                 {
                                     token ?
-                                        <li className="nav-item" id="login">
-                                            <Link className="nav-link" to={""} onClick={logOut}>خروج</Link>
+                                        <li className="nav-item ms-lg-auto d-lg-none d-block" id="sign up">
+                                            <Link className='nav-link' to='./UserProfile'>ویرایش اطلاعات کاربری</Link>
                                         </li>
                                         :
+                                        ""
+                                }
+                                {
+                                    token ?
+                                        <li className="nav-item ms-lg-auto d-lg-none d-block" id="sign up">
+                                            <Link className='nav-link' to='./resetPassword'>تغییر رمز عبور</Link>
+                                        </li>
+                                        :
+                                        ""
+                                }
+                                {
+                                    token ?
+                                        <li className="nav-item ms-lg-auto d-lg-none d-block" id="sign up"
+                                            onClick={logOut}>
+                                            <Link className='nav-link' to={''}>خروج</Link>
+                                        </li>
+                                        :
+                                        ""
+                                }
+                                {
+                                    token ?
+                                        "" :
                                         <li className="nav-item" id="login">
                                             <Link className="nav-link" to="./Login">ورود</Link>
                                         </li>

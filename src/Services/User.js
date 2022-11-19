@@ -6,7 +6,8 @@ const urls = {
     register: API_BASE_URL + 'Users/register',
     login: API_BASE_URL + 'Users/Token',
     Profile: API_BASE_URL + 'Users',
-    forgotPassword: ''
+    userDuplicate: API_BASE_URL + 'Users/checkUserDuplicate',
+    resetPassword: API_BASE_URL + 'Users/ResetPassword'
 }
 
 class UserService {
@@ -15,6 +16,19 @@ class UserService {
             .post(urls.register, userData)
             .then((response) => {
                 return response.data;
+            })
+            .catch((err) => {
+                if (err.response) {
+                    return Promise.reject(err.response);
+                }
+            });
+    }
+
+    checkUserDuplicate(phoneNumber) {
+        return axios
+            .get(urls.userDuplicate, `?PhoneNumber=${phoneNumber}`)
+            .then((res) => {
+                return res.data;
             })
             .catch((err) => {
                 if (err.response) {
@@ -43,7 +57,7 @@ class UserService {
                 const lastName = res.data.lastName;
                 localStorage.setItem("lastName", lastName);
 
-                const userId = res.data.id;
+                const userId = res.data.userId;
                 localStorage.setItem("userId", userId);
 
                 return res.data;
@@ -58,6 +72,19 @@ class UserService {
     Profile(id) {
         return authedAxios
             .get(urls.Profile + `/${id}`)
+            .then((response) => {
+                return response.data
+            })
+            .catch((error) => {
+                if (error.data) {
+                    return Promise.reject(error.data)
+                }
+            })
+    }
+
+    resetPassword(changePassword) {
+        return authedAxios
+            .post(urls.resetPassword, changePassword)
             .then((response) => {
                 return response.data
             })

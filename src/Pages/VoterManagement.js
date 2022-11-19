@@ -12,17 +12,18 @@ const VoterManagement = () => {
 
     const [delId, setDelId] = useState("");
     const [voter, setVoter] = useState([]);
-    const [page, setPage] = useState(1);
-    const [size, setSize] = useState(10);
-    const [pageNumber, setPageNumber] = useState("");
+    const [pageNumber, setPageNumber] = useState(1);
+    const [pageSize, setPageSize] = useState(10);
+    const [pageCount, setPageCount] = useState("");
+    const [isUpdating, setIsUpdating] = useState(false);
     const params = useParams();
 
     useEffect(() => {
-        VoterService.getVoter(params.id, page, size).then((r) => {
+        VoterService.getVoterList(params.id, pageNumber, pageSize).then((r) => {
             setVoter(r.data);
-            setPageNumber(r.total);
+            setPageCount(r.total);
         })
-    }, [page, size]);
+    }, [pageNumber, pageSize, isUpdating]);
 
     const editVoter = (e) => {
         e.preventDefault();
@@ -46,15 +47,16 @@ const VoterManagement = () => {
             setVoter(del);
             setDelId("");
             alert(res.message);
+            setIsUpdating(!isUpdating);
         })
     };
 
     let items = [];
-    for (let number = 1; number <= (Math.ceil(pageNumber / size)); number++) {
+    for (let number = 1; number <= (Math.ceil(pageCount / pageSize)); number++) {
         items.push(
             <li className="page-item px-1" key={number}>
-                <button className={`page-link ${page === number ? "active" : ""}`}
-                        onClick={() => setPage(number)}>
+                <button className={`page-link ${pageNumber === number ? "active" : ""}`}
+                        onClick={() => setPageNumber(number)}>
                     {number}
                 </button>
             </li>
@@ -74,7 +76,7 @@ const VoterManagement = () => {
                         <img src={AddUser} className="pe-1" alt=""/>
                         اضافه کردن
                     </button>
-                    <VoterModal/>
+                    <VoterModal isUpdating={isUpdating} setIsUpdating={setIsUpdating}/>
                     <div className="for-table mt-2">
                         <table className="table table-striped mb-0">
                             <thead>
@@ -93,7 +95,7 @@ const VoterManagement = () => {
                             <tbody>
                             {voter.map((v, i) =>
                                 <tr key={v.id}>
-                                    <td>{(page - 1) * 10 + (i + 1)}</td>
+                                    <td>{(pageNumber - 1) * 10 + (i + 1)}</td>
                                     <td>-</td>
                                     <td>{v.firstName}</td>
                                     <td>{v.lastName}</td>
@@ -154,7 +156,7 @@ const VoterManagement = () => {
                     <div className="d-flex justify-content-evenly mt-3" dir="ltr">
                         <div className="col-2">
                             <select className="form-select" aria-label="Default select example"
-                                    onChange={(e) => setSize(e.target.value)}>
+                                    onChange={(e) => setPageSize(e.target.value)}>
                                 <option value="10">10</option>
                                 <option value="25">25</option>
                                 <option value="50">50</option>
@@ -164,19 +166,19 @@ const VoterManagement = () => {
                         <div className="">
                             <nav aria-label="Page navigation example">
                                 <ul className="pagination">
-                                    {page !== 1 ?
+                                    {pageNumber !== 1 ?
                                         <li className="page-item">
                                             <button className="page-link" aria-label="Previous"
-                                                    onClick={() => setPage(page - 1)}>
+                                                    onClick={() => setPageNumber(pageNumber - 1)}>
                                                 <span aria-hidden="true">&laquo;</span>
                                             </button>
                                         </li> : ""
                                     }
                                     {items}
-                                    {page === Math.ceil(pageNumber / size) ? "" :
+                                    {pageNumber === Math.ceil(pageCount / pageSize) ? "" :
                                         <li className="page-item">
                                             <button className="page-link" aria-label="Previous"
-                                                    onClick={() => setPage(page + 1)}>
+                                                    onClick={() => setPageNumber(pageNumber + 1)}>
                                                 <span aria-hidden="true">&raquo;</span>
                                             </button>
                                         </li>

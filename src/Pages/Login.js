@@ -24,19 +24,22 @@ const Login = () => {
         };
         UserService.Login(loginInfo).then((to) => {
             if (to.access_token) {
-                window.location.href = "./"
-                alert("خوش آمدید")
+                window.location.href = "./";
+                alert("خوش آمدید");
             } else {
                 setMessage("نام کاربری یا رمز عبور اشتباه است");
             }
         })
     };
+
     const usernameInput = (e) => {
         setUsername(e.target.value);
     }
+
     const passwordInput = (e) => {
         setPassword(e.target.value);
     }
+
     return (
         <div>
             <div className="mx-auto login-page col-lg-4 col-md-6 col-11">
@@ -66,7 +69,13 @@ const Login = () => {
                             رمز عبور
                         </label>
                     </div>
-                    <div className="text-center mt-5 mb-3">
+                    <div className="text-center mt-2">
+                        <Link to="../Register">قبلا ثبت نام کرده اید</Link>
+                    </div>
+                    <div className="text-center mt-2">
+                        <Link to="">فراموشی رمز عبور</Link>
+                    </div>
+                    <div className="text-center mt-4 mb-3">
                         <button className="btn login-btn col-11 py-2 mb-0" type="submit" onClick={onSubmit}>ورود
                         </button>
                     </div>

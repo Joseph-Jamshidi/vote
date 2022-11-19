@@ -14,19 +14,23 @@ import persian from "react-date-object/calendars/persian";
 
 const Voting = () => {
 
-    const [size, setSize] = useState(10);
+
     const [elections, setElections] = useState([]);
     const [delId, setDelId] = useState("");
-    const [page, setPage] = useState(1);
-    const [pageNumber, setPageNumber] = useState('');
+    const [pageSize, setPageSize] = useState(10);
+    const [pageNumber, setPageNumber] = useState(1);
+    const [pageCount, setPageCount] = useState('');
+    const [isUpdating, setIsUpdating] = useState(false);
+
     let navigate = useNavigate();
 
     useEffect(() => {
-        ElectionService.takeElection(page, size).then((r) => {
+        ElectionService.takeElection(pageNumber, pageSize).then((r) => {
             setElections(prepareData(r.data));
-            setPageNumber(r.total);
+            setPageCount(r.total);
         })
-    }, [page, size]);
+    }, [pageNumber, pageSize, isUpdating]);
+
 
     const prepareData = (elections) => {
         return elections.map(m => {
@@ -53,6 +57,7 @@ const Voting = () => {
             setElections(del);
             setDelId("");
             alert(r.message);
+            setIsUpdating(!isUpdating);
         })
     }
 
@@ -69,11 +74,11 @@ const Voting = () => {
     }
 
     let items = [];
-    for (let number = 1; number <= (Math.ceil(pageNumber / size)); number++) {
+    for (let number = 1; number <= (Math.ceil(pageCount / pageSize)); number++) {
         items.push(
             <li className="page-item px-1" key={number}>
-                <button className={`page-link ${page === number ? "active" : ""}`}
-                        onClick={() => setPage(number)}>
+                <button className={`page-link ${pageNumber === number ? "active" : ""}`}
+                        onClick={() => setPageNumber(number)}>
                     {number}
                 </button>
             </li>
@@ -132,7 +137,7 @@ const Voting = () => {
                                         هیچگونه انتخاباتی برای کاربر وجود ندارد
                                     </div>
                             }
-                            <div className="for-table">
+                            <div className="for-table table-responsive">
                                 <table className="table table-striped mb-0">
                                     <thead>
                                     <tr>
@@ -152,7 +157,7 @@ const Voting = () => {
                                     {
                                         elections.map((el, i) =>
                                             <tr key={el.id}>
-                                                <td className="align-middle">{(page - 1) * 10 + (i + 1)}</td>
+                                                <td className="align-middle">{(pageNumber - 1) * 10 + (i + 1)}</td>
                                                 <td className="align-middle">{el.name}</td>
                                                 <td className="align-middle">{el.persianStartDate}</td>
                                                 <td className="align-middle">{el.persianEndDate}</td>
@@ -223,7 +228,7 @@ const Voting = () => {
                             <div className="d-flex justify-content-evenly mt-3" dir="ltr">
                                 <div className="col-2">
                                     <select className="form-select" aria-label="Default select example"
-                                            onChange={(e) => setSize(e.target.value)}>
+                                            onChange={(e) => setPageSize(e.target.value)}>
                                         <option value="10">10</option>
                                         <option value="25">25</option>
                                         <option value="50">50</option>
@@ -233,19 +238,19 @@ const Voting = () => {
                                 <div className="">
                                     <nav aria-label="Page navigation example">
                                         <ul className="pagination">
-                                            {page !== 1 ?
+                                            {pageNumber !== 1 ?
                                                 <li className="page-item">
                                                     <button className="page-link" aria-label="Previous"
-                                                            onClick={() => setPage(page - 1)}>
+                                                            onClick={() => setPageNumber(pageNumber - 1)}>
                                                         <span aria-hidden="true">&laquo;</span>
                                                     </button>
                                                 </li> : ""
                                             }
                                             {items}
-                                            {page === Math.ceil(pageNumber / size) ? "" :
+                                            {pageNumber === Math.ceil(pageCount / pageSize) ? "" :
                                                 <li className="page-item">
                                                     <button className="page-link" aria-label="Previous"
-                                                            onClick={() => setPage(page + 1)}>
+                                                            onClick={() => setPageNumber(pageNumber + 1)}>
                                                         <span aria-hidden="true">&raquo;</span>
                                                     </button>
                                                 </li>
