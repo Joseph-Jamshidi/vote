@@ -236,9 +236,16 @@ h1 {
     border-radius: 6px;
 }
 
-.cardElection {
+.cardElectionOdd {
     background-color: #DEEBF2;
     padding: 10px 5px;
+    width: 100%;
+}
+
+.cardElectionEven {
+    background-color: #EAF8FF;
+    padding: 10px 5px;
+    width: 100%;
 }
 
 .voteButton {
@@ -248,14 +255,15 @@ h1 {
     padding: 6px;
 }
 
-.voteButton span{
-    padding: 3px;
+.voteButton span {
+    padding: 0;
 }
 
 .voteButton:hover {
     color: black;
 }
-span{
+
+span {
     font-family: 'Vazir FD-UI', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -263,3 +271,24 @@ span{
     line-height: 30px;
     margin: auto 0;
 }
+
+.enableElections {
+    background-color: white;
+    border-radius: 16px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #425C81;
+}
+
+.electionsHeader{
+    text-align: center;
+    font-family: 'Vazir FD-UI', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    color: #425C81;
+    margin: 10px 0;
+}
+

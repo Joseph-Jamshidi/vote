@@ -14,7 +14,6 @@ import persian from "react-date-object/calendars/persian";
 
 const Voting = () => {
 
-
     const [elections, setElections] = useState([]);
     const [delId, setDelId] = useState("");
     const [pageSize, setPageSize] = useState(10);

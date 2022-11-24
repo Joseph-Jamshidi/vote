@@ -42,9 +42,12 @@ const HomePage = () => {
     }
 
     const convertTime = (date) => {
-        const dateObj = new Date(date);
-        const object = {dateObj, format: "YYYY-MM-DD"}
-        const persianDate = new DateObject(object).convert(persian, persian_en).format();
+        let dateObj = new Date(date);
+        let object = {dateObj, format: "YYYY-MM-DD"}
+        let d22 = new Date(2000, 1, 1);
+        let object2 = {dateObj, format: "YYYY-MM-DD"}
+        let persianDate = new DateObject(object).convert(persian, persian_en).format();
+        let p1 = new DateObject(object2).convert(persian, persian_en).format();
         return (persianDate)
     }
 
@@ -55,37 +58,42 @@ const HomePage = () => {
             <div className="position-relative section2">
                 <div className="container">
                     <div className="row d-flex justify-content-md-around">
-                        <div className="col-lg-6 text-lg-start text-center">
-                            {
-                                votableElections.map((ve) =>
-                                    <div className="cardElection d-flex justify-content-between my-2" key={ve.id}>
-                                        <span className="align-">{ve.name}</span>
-                                        <span>{ve.persianStartDate}</span>
-                                        <span>{ve.persianEndDate}</span>
-                                        <Link className="px-sm-0 voteButton" id="">
-                                            <span>شرکت در انتخابات</span>
-                                        </Link>
-                                    </div>
-                                )
-                            }
-                            <div className="container px-0 mt-5 text-center">
-                                <div className="row gx-5 d-flex justify-content-center justify-content-lg-start">
-                                    <div className="col-lg-3 col-md-6 col-sm-8">
-                                        {token ? "" :
+                        <div className="col-lg-6 text-lg-start text-center enableElections">
+                            <div>
+                                <h1 className="electionsHeader">انتخابات های در حال اجرا</h1>
+                                {
+                                    votableElections.map((ve, index) =>
+                                        <div
+                                            className={index % 2 === 0 ?
+                                                "cardElectionEven d-flex justify-content-between mt-2" :
+                                                "cardElectionOdd d-flex justify-content-between mt-2"}
+                                            key={ve.id}>
+                                            <span className="align-">{ve.name}</span>
+                                            <span>از: {ve.persianStartDate}</span>
+                                            <span>تا: {ve.persianEndDate}</span>
+                                            <Link className="voteButton" id="">
+                                                <span className="p-md-1">شرکت در انتخابات</span>
+                                            </Link>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                            {token ? "" :
+                                <div className="container px-0 mt-5 text-center">
+                                    <div className="row gx-5 d-flex justify-content-center justify-content-lg-start">
+                                        <div className="col-lg-3 col-md-6 col-sm-8">
                                             <div className="py-1 card">
                                                 <Link to="./Register" id="signup2">ثبت نام</Link>
-                                            </div>}
-                                    </div>
-                                    <div className="col-lg-3 col-md-6 col-sm-8">
-                                        {token ? "" :
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-3 col-md-6 col-sm-8">
                                             <div className="py-1 card" id="login2">
                                                 <Link to="./Login">ورود</Link>
                                             </div>
-                                        }
+                                        </div>
                                     </div>
                                 </div>
-
-                            </div>
+                            }
                         </div>
                         <div className="col-lg-6 d-flex justify-content-sm-center">
                             <img className="img-fluid" src={Group} alt=""/>

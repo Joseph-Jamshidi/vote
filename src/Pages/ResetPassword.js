@@ -8,7 +8,6 @@ import Ellipse652 from "../images/Ellipse652.png";
 import Ellipse654 from "../images/Ellipse654.png";
 import {UserInfo} from "../Services/info";
 import UserService from "../Services/User";
-import {clear} from "@testing-library/user-event/dist/clear";
 
 const ResetPassword = () => {
 
@@ -22,10 +21,12 @@ const ResetPassword = () => {
         };
         UserService.resetPassword(changePassword).then((r) => {
             if (r.isSuccess === true) {
+                setTimeout(() => {
+                    localStorage.clear();
+                    window.location.href = "./login";
+                }, 1000)
                 alert(r.message);
-                localStorage.clear();
-                window.location.href = "./login";
-            }else {
+            } else {
                 alert("رمز عبور باید حداقل 6 کارکتر باشد")
             }
         })
@@ -43,10 +44,10 @@ const ResetPassword = () => {
                         <Link to="/">
                             <img src={Arrow} className="mt-2" alt=""/>
                         </Link>
-                        <div id="enter">ورود</div>
+                        <div id="enter">بازگشت به صفحه اصلی</div>
                     </div>
                     <form className="login-form" onSubmit={submitHandler}>
-                        <div className="form-floating">
+                        <div className="form-floating mb-5 pb-5">
                             <input className="form-control" type="password" id="pass" placeholder="username"
                                    onInput={passwordHandler}/>
                             <label className="form-label" htmlFor="pass">
@@ -54,7 +55,7 @@ const ResetPassword = () => {
                                 رمز عبور
                             </label>
                         </div>
-                        <div className="text-center mt-4 mb-3">
+                        <div className="text-center mt-4 mb-4 pt-3">
                             <button className="btn login-btn col-11 py-2 mb-0" type="submit">تغییر رمز عبور
                             </button>
                         </div>
